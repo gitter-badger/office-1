@@ -9,7 +9,7 @@ function namecheck() {
   }
 }
 function emailcheck(){
-    var string1=document.myForm.email.value
+    var string1=document.myForm.email.value.toLowerCase();
     if (string1.indexOf("@")==-1 || string1.indexOf(".")==-1){
       document.getElementById('email').style.borderColor = "red";
       document.getElementById("error_email").innerHTML = "enter valid email address";
