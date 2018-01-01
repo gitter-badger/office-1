@@ -57,5 +57,18 @@ function selectcheck() {
     } else {
       document.getElementById("error_select").innerHTML = "";
     }
-
+}
+function whichElement(e) {
+    var targ;
+    if (!e) {
+        var e = window.event;
+    }
+    if (e.target) {
+        targ=e.target;
+    } else if (e.srcElement) {
+        targ=e.srcElement;
+    }
+    var tname;
+    tname = targ.tagName;
+    alert("here are the terms and condtion");
 }
