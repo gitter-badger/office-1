@@ -78,6 +78,18 @@ input[type=button]
 	font-size:15px;
 	cursor:pointer;
 }
+input[type=reset]
+{
+	margin-bottom: 20px;
+	width:40%;
+	padding: 15px;
+	border-radius:5px;
+	border:1px solid #7ac9b7;
+	background-color: #4180C5;
+	color: aliceblue;
+	font-size:15px;
+	cursor:pointer;
+}
 #submit:hover
 {
  background-color: black;

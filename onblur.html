@@ -8,55 +8,49 @@
 	<link rel="stylesheet" media="screen and (max-width: 1200px) and (min-width: 601px)" href="responsiveform1.css" />
 	<link rel="stylesheet" media="screen and (max-width: 600px) and (min-width: 351px)" href="responsiveform2.css" />
 	<link rel="stylesheet" media="screen and (max-width: 350px)" href="responsiveform3.css" />
-
+	<script src="validator.js" charset="utf-8"></script>
 	<script type="text/javascript">
-			function check() {
-				var errormessage = "";
-				var check_box = "";
-				var div_message = "";
-				if(document.getElementById('name').value == "") {
-					errormessage += "enter name <br>";
-					document.getElementById('name').style.borderColor = "red";
-				}
-				if(document.getElementById('date').value == "") {
-					errormessage += "enter date <br/>";
-					document.getElementById('date').style.borderColor = "red";
-				}
-				if(document.getElementById('address').value == "") {
-					errormessage += "enter address <br/>";
-					document.getElementById('address').style.borderColor = "red";
-				}
-				var checkbox = document.getElementsByName('hobbies[]');
-				var ln = 0;
-				for(var i=0; i< checkbox.length; i++) {
-				    if(checkbox[i].checked)
-				        ln++
-				}
-				if(ln === 0) {
-					errormessage += "enter atleast one hobbies <br> ";
-				}
-				if(!this.myForm.checkbox.checked)
-				{
-					 alert("Agree to terms and condtion");
-					 document.getElementById('checkbox').style.borderColor = "red";
-					 return false;
-				}
-				if(errormessage != "") {
-					document.getElementById("error_message").innerHTML = errormessage;
-					return false;
-				}
-				else{
-					document.getElementById("error_message").innerHTML = "";
-					return false;
-				}
-			}
-			function emailcheck(){
-			    var string1=document.myForm.email.value
-			    if (string1.indexOf("@")==-1){
-			        alert("Please input a valid email address!")
-			        document.example.email.focus()
-			    }
-			}
+			// function check() {
+			// 	var errormessage = "";
+			// 	var check_box = "";
+			// 	var div_message = "";
+			// 	if(document.getElementById('name').value == "") {
+			// 		errormessage += "enter name <br>";
+			// 		document.getElementById('name').style.borderColor = "red";
+			// 	}
+			// 	if(document.getElementById('date').value == "") {
+			// 		errormessage += "enter date <br/>";
+			// 		document.getElementById('date').style.borderColor = "red";
+			// 	}
+			// 	if(document.getElementById('address').value == "") {
+			// 		errormessage += "enter address <br/>";
+			// 		document.getElementById('address').style.borderColor = "red";
+			// 	}
+			// 	var checkbox = document.getElementsByName('hobbies[]');
+			// 	var ln = 0;
+			// 	for(var i=0; i< checkbox.length; i++) {
+			// 	    if(checkbox[i].checked)
+			// 	        ln++
+			// 	}
+			// 	if(ln === 0) {
+			// 		errormessage += "enter atleast one hobbies <br> ";
+			// 	}
+			// 	if(!this.myForm.checkbox.checked)
+			// 	{
+			// 		 alert("Agree to terms and condtion");
+			// 		 document.getElementById('checkbox').style.borderColor = "red";
+			// 		 return false;
+			// 	}
+			// 	if(errormessage != "") {
+			// 		document.getElementById("error_message").innerHTML = errormessage;
+			// 		return false;
+			// 	}
+			// 	else{
+			// 		document.getElementById("error_message").innerHTML = "";
+			// 		return false;
+			// 	}
+			// }
+
 	</script>
 
 </head>
@@ -68,36 +62,34 @@
 </header>
 <hr>
 <div class="container">
-	<form action="" method="post" name="myForm">
-		<div class="col-25">
-
-		</div>
-		<div class="col-75" id="error_message">
-
-		</div>
-
+	<form action="" method="post" name="myForm" autocomplete="off">
 		<div class="col-25">
 			<label>Your Name </label>
 		</div>
 			<div class="col-75">
-				<input type="text" name="name" placeholder="Enter name" id="name" width="100px;">
+				<input type="text" name="name" placeholder="Enter name" id="name" onblur="namecheck()" width="100px;">
 			</div>
-
+			<div class="col-25"></div>
+			<div class="col-75" id="error_name"></div>
 
 
 			<div class="col-25">
 				<label>Date of birth </label>
 			</div>
 				<div class="col-75">
-					<input type="date" name="date" id="date" value="">
+					<input type="date" name="date" id="date" onblur="datecheck()" value="">
 				</div>
+				<div class="col-25"></div>
+				<div class="col-75" id="error_date"></div>
 
 				<div class="col-25">
 					<label>  Email </label>
 				</div>
 					<div class="col-75">
-						<input type="text" name="email" placeholder="Enter email" id="email"  onblur="emailcheck()" width="100px;">
+						<input type="text" name="email" placeholder="Enter email" id="email"  onkeydown="emailcheck()" width="100px;">
 					</div>
+					<div class="col-25"></div>
+					<div class="col-75" id="error_email"></div>
 
 				<div class="col-25">
 					<label> Gender</label>
@@ -111,11 +103,14 @@
 						<label>Occupation</label>
 					</div>
 						<div class="col-75">
-							<select name="occ">
-								<option>Bussines</option>
+							<select name="occ" id="occ" onblur="selectcheck()">
+								<option value="">select</option>
+								<option value="Bussines">Bussines</option>
 								<option>Goverment</option>
 							</select> <br> <br>
 						</div>
+						<div class="col-25"></div>
+						<div class="col-75" id="error_select"></div>
 
 						<div class="col-25">
 							<label>Hobbies</label>
@@ -125,13 +120,17 @@
 								<input type="checkbox" name="hobbies[]" value=""> chess <br>
 								<input type="checkbox" name="hobbies[]" value=""> swimming	<br><br>
 							</div>
+							<div class="col-25"></div>
+							<div class="col-75" id="error_hobbies"></div>
 
 							<div class="col-25">
 								<label>  Address </label>
 							</div>
 								<div class="col-75">
-									<textarea name="message" rows="5" cols="10" id="address" placeholder="Enter your address"></textarea>
+									<textarea name="message" rows="5" cols="10" id="address" placeholder="Enter your address" onblur="addresscheck()"></textarea>
 								</div>
+								<div class="col-25"></div>
+								<div class="col-75" id="error_address"></div>
 
 								<div class="col-25"></div>
 									<div class="col-75">
@@ -140,8 +139,16 @@
 									</div>
 
 									<div class="col-25"></div>
+									<input type="button"  onclick="check()" name="submit" value="Submit"  id="submit"> <br>
 
-		<input type="button"  onclick="check()" name="submit" value="Submit"  id="submit">
+									<div class="col-25"></div>
+									<input type="reset"  onclick="check()" name="submit" value="reset" id="submit">
+
+
+
+
+
+
 	</form>
 </div>
 
