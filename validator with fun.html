@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form</title>
+	<!-----Including CSS for different screen sizes----->
+	<link rel="stylesheet" type="text/css" href="responsiveform.css">
+	<link rel="stylesheet" media="screen and (max-width: 1200px) and (min-width: 601px)" href="responsiveform1.css" />
+	<link rel="stylesheet" media="screen and (max-width: 600px) and (min-width: 351px)" href="responsiveform2.css" />
+	<link rel="stylesheet" media="screen and (max-width: 350px)" href="responsiveform3.css" />
+	<script src="validator.js" charset="utf-8"></script>
+	<script type="text/javascript">
+			// function check() {
+			// 	var errormessage = "";
+			// 	var check_box = "";
+			// 	var div_message = "";
+			// 	if(document.getElementById('name').value == "") {
+			// 		errormessage += "enter name <br>";
+			// 		document.getElementById('name').style.borderColor = "red";
+			// 	}
+			// 	if(document.getElementById('date').value == "") {
+			// 		errormessage += "enter date <br/>";
+			// 		document.getElementById('date').style.borderColor = "red";
+			// 	}
+			// 	if(document.getElementById('address').value == "") {
+			// 		errormessage += "enter address <br/>";
+			// 		document.getElementById('address').style.borderColor = "red";
+			// 	}
+			// 	var checkbox = document.getElementsByName('hobbies[]');
+			// 	var ln = 0;
+			// 	for(var i=0; i< checkbox.length; i++) {
+			// 	    if(checkbox[i].checked)
+			// 	        ln++
+			// 	}
+			// 	if(ln === 0) {
+			// 		errormessage += "enter atleast one hobbies <br> ";
+			// 	}
+			// 	if(!this.myForm.checkbox.checked)
+			// 	{
+			// 		 alert("Agree to terms and condtion");
+			// 		 document.getElementById('checkbox').style.borderColor = "red";
+			// 		 return false;
+			// 	}
+			// 	if(errormessage != "") {
+			// 		document.getElementById("error_message").innerHTML = errormessage;
+			// 		return false;
+			// 	}
+			// 	else{
+			// 		document.getElementById("error_message").innerHTML = "";
+			// 		return false;
+			// 	}
+			// }
+
+	</script>
+
+</head>
+<body>
+<div id="envelope">
+<header>
+    <h2>Making Responsive Form</h2>
+    <p>This is my form. Fill it out. It's Awesome. You will enjoy</p>
+</header>
+<hr>
+<div class="container">
+	<form action="" method="post" name="myForm" autocomplete="off">
+		<div class="col-25"></div>
+		<div class="col-75">
+			<h2 onmouseover="style.color='red'" onmouseout="style.color='black'">Magic happens here</h2>
+		</div>
+		<div class="col-25">
+			<label>Your Name </label>
+		</div>
+			<div class="col-75">
+				<input type="text" name="name" placeholder="Enter name" id="name" onblur="namecheck()" width="100px;">
+			</div>
+			<div class="col-25"></div>
+			<div class="col-75" id="error_name"></div>
+
+
+			<div class="col-25">
+				<label>Date of birth </label>
+			</div>
+				<div class="col-75">
+					<input type="date" name="date" id="date" onblur="datecheck()" value="">
+				</div>
+				<div class="col-25"></div>
+				<div class="col-75" id="error_date"></div>
+
+				<div class="col-25">
+					<label>  Email </label>
+				</div>
+					<div class="col-75">
+						<input type="text" name="email" placeholder="Enter email" id="email"  onkeydown="emailcheck()" width="100px;">
+					</div>
+					<div class="col-25"></div>
+					<div class="col-75" id="error_email"></div>
+
+				<div class="col-25">
+					<label> Gender</label>
+				</div>
+					<div class="col-75">
+						<input type="radio" name="gender" value="male" checked> male
+						<input type="radio" name="gender" value="female"> female <br> <br>
+					</div>
+
+					<div class="col-25">
+						<label>Occupation</label>
+					</div>
+						<div class="col-75">
+							<select name="occ" id="occ" onblur="selectcheck()">
+								<option value="">select</option>
+								<option value="Bussines">Bussines</option>
+								<option>Goverment</option>
+							</select> <br> <br>
+						</div>
+						<div class="col-25"></div>
+						<div class="col-75" id="error_select"></div>
+
+						<div class="col-25">
+							<label>Hobbies</label>
+						</div>
+							<div class="col-75">
+								<input type="checkbox" name="hobbies[]" value="" > cricket <br>
+								<input type="checkbox" name="hobbies[]" value=""> chess <br>
+								<input type="checkbox" name="hobbies[]" value=""> swimming	<br><br>
+							</div>
+							<div class="col-25"></div>
+							<div class="col-75" id="error_hobbies"></div>
+
+							<div class="col-25">
+								<label>  Address </label>
+							</div>
+								<div class="col-75">
+									<textarea name="message" rows="5" cols="10" id="address" placeholder="Enter your address" onblur="addresscheck()"></textarea>
+								</div>
+								<div class="col-25"></div>
+								<div class="col-75" id="error_address"></div>
+
+								<div class="col-25"></div>
+									<div class="col-75">
+										<input type="checkbox" name="checkbox" id="check_box" value="">
+										<label onmousedown="whichElement(event)">I agree to the terms and condtion.</label><br> <br>
+									</div>
+
+									<div class="col-25"></div>
+									<input type="button"   name="submit" value="Submit"  id="submit"> <br>
+
+									<div class="col-25"></div>
+									<input type="reset"   name="submit" value="reset" id="submit">
+
+
+
+	</form>
+</div>
+
+</div>
+</body>
+</html>
